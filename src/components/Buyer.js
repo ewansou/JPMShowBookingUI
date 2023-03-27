@@ -1,94 +1,56 @@
-/* import React, { useEffect, useState, useRef } from "react";
-import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import { getAdminRetrieveShows } from "../actions/adminRetrieveShowsAPI";
+import React from "react";
 import Button from "@material-ui/core/Button";
+import ButtonGroup from '@mui/material/ButtonGroup';
 import Link from "@material-ui/core/Link";
 
-function PhotoGIF12(props) {
-  const postRequestStateObject = useSelector(
-    (state) => state.postRequestReducer
-  );
+import { makeStyles } from '@material-ui/styles'
 
-  const dispatch = useDispatch();
-  const history = useHistory();
+const useStyles = makeStyles(theme => ({
+  root: {
+    margin: 10,
+    width: 500,
+    height: 100,
+    color: '#FFFFFF',
+    fontSize: 20,
+    background: '#F26522'
+  },
+  hover: {
+    "&:hover": {
+      backgroundColor: 'rgb(7, 177, 77, 0.42)'
+    },
+  }
+}))
 
-  const amount = "1200"; //Change here
-  const dollarAmount = "$" + amount / 100;
-
-  useEffect(() => {
-    dispatch(getOmiseQR(amount));
-    console.log("Only render on first render");
-    console.log("SSE end point is: " + postRequestStateObject.sseEndpoint);
-  }, []);
-
-  const [data, updateData] = useState("Pending payment...");
-
-  const isInitialMount = useRef(true);
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      console.log("sseEndPoint changed");
-      console.log("SSE end point is: " + postRequestStateObject.sseEndpoint);
-
-      const source = new EventSource(postRequestStateObject.sseEndpoint);
-      source.onmessage = function logEvents(event) {
-        updateData(event.data);
-        history.push("/paymentsuccess");
-      };
-    }
-  });
-
-  const renderTime = ({ remainingTime }) => {
-    if (remainingTime === 0) {
-      return <div className="timer">Too late...</div>;
-    }
-
-    return (
-      <div className="timer">
-        <div className="text">Please make<br />payment in</div>
-        <div className="value">{remainingTime}</div>
-        <div className="text">seconds</div>
-      </div>
-    );
-  };
+function BuyerMenu() {
+  const classes = useStyles()
 
   return (
     <div>
-      <p>Photo</p>
-      <p>Paying amount: {dollarAmount}</p>
-      <p>{postRequestStateObject.chargeID}</p>
-      <p>{postRequestStateObject.sseEndpoint}</p>
-      <img src={postRequestStateObject.imageURL} />
+      <p>Buyer Menu</p>
 
-      <CountdownCircleTimer
-        onComplete={() => {
-          // do your stuff here
-          {
-            //history.push("/");
-          }
-          return [true, 1500]; // repeat animation in 1.5 seconds
-        }}
-        isPlaying
-        duration={10}
-        colors={[
-          ["#004777", 0.33],
-          ["#F7B801", 0.33],
-          ["#A30000", 0.33],
-        ]}
+      <ButtonGroup
+        orientation="vertical"
       >
-        {renderTime}
-      </CountdownCircleTimer>
 
-      <div>{data}</div>
-      <Button variant="contained" color="primary">
-        <Link href="/">BACK TO HOME</Link>
+      <Button className={classes.root}>
+        <Link underline="none" color="white" href="/buyerretrieveavailableseatingsbyshownumber">Retrieve Available Seats By Show Number</Link>
       </Button>
+
+      <Button className={classes.root}>
+        <Link underline="none" href="/buyerbookseats">Book Seats</Link>
+      </Button>
+
+      <Button className={classes.root}>
+        <Link underline="none" href="/buyercancelticket">Cancel Ticket</Link>
+      </Button>
+    
+      <Button className={classes.root}>
+        <Link underline="none" href="/">BACK TO HOME</Link>
+      </Button>
+      
+      </ButtonGroup>
     </div>
   );
 }
 
-export default PhotoGIF12;
- */
+export default BuyerMenu;
