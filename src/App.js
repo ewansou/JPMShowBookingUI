@@ -44,64 +44,64 @@ const App = () => {
               layout="PHOTO10_PAGE"
             />
             <DynamicLayout
-            exact
-            path="/adminretrieveShows"
-            component={AdminRetrieveShows}
-            layout="PHOTO10_PAGE"
+              exact
+              path="/adminretrieveShows"
+              component={AdminRetrieveShows}
+              layout="PHOTO10_PAGE"
             />
             <DynamicLayout
-            exact
-            path="/adminretrieveallshowsseatings"
-            component={AdminRetrieveAllShowsSeatings}
-            layout="PHOTO10_PAGE"
+              exact
+              path="/adminretrieveallshowsseatings"
+              component={AdminRetrieveAllShowsSeatings}
+              layout="PHOTO10_PAGE"
             />
             <DynamicLayout
-            exact
-            path="/adminviewshowbyshownumber"
-            component={AdminViewShowByShowNumber}
-            layout="PHOTO10_PAGE"
+              exact
+              path="/adminviewshowbyshownumber"
+              component={AdminViewShowByShowNumber}
+              layout="PHOTO10_PAGE"
             />
             <DynamicLayout
-            exact
-            path="/adminretrieveshowseatingsbyshownumber"
-            component={AdminViewShowSeatingsByShowNumber}
-            layout="PHOTO10_PAGE"
+              exact
+              path="/adminretrieveshowseatingsbyshownumber"
+              component={AdminViewShowSeatingsByShowNumber}
+              layout="PHOTO10_PAGE"
             />
             <DynamicLayout
-            exact
-            path="/adminretrieveshowseatingsbyshownumberandstatus"
-            component={AdminViewShowSeatingsByShowNumberAndStatus}
-            layout="PHOTO10_PAGE"
+              exact
+              path="/adminretrieveshowseatingsbyshownumberandstatus"
+              component={AdminViewShowSeatingsByShowNumberAndStatus}
+              layout="PHOTO10_PAGE"
             />
             <DynamicLayout
-            exact
-            path="/adminsetupshow"
-            component={AdminSetupShow}
-            layout="PHOTO10_PAGE"
+              exact
+              path="/adminsetupshow"
+              component={AdminSetupShow}
+              layout="PHOTO10_PAGE"
             />
             <DynamicLayout
-            exact
-            path="/buyer"
-            component={Buyer}
-            layout="PHOTO10_PAGE"
+              exact
+              path="/buyer"
+              component={Buyer}
+              layout="PHOTO10_PAGE"
             />
             <DynamicLayout
-            exact
-            path="/buyerretrieveavailableseatingsbyshownumber"
-            component={BuyerRetrieveAvailableSeatingsByShowNumber}
-            layout="PHOTO10_PAGE"
+              exact
+              path="/buyerretrieveavailableseatingsbyshownumber"
+              component={BuyerRetrieveAvailableSeatingsByShowNumber}
+              layout="PHOTO10_PAGE"
             />
             <DynamicLayout
-            exact
-            path="/buyerbookseats"
-            component={BuyerBookSeats}
-            layout="PHOTO10_PAGE"
+              exact
+              path="/buyerbookseats"
+              component={BuyerBookSeats}
+              layout="PHOTO10_PAGE"
             />
             <DynamicLayout
-            exact
-            path="/buyercancelticket"
-            component={BuyerCancelTicket}
-            layout="PHOTO10_PAGE"
+              exact
+              path="/buyercancelticket"
+              component={BuyerCancelTicket}
+              layout="PHOTO10_PAGE"
             />
           </Switch>
         </div>
