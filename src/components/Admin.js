@@ -28,6 +28,10 @@ function AdminMenu() {
       </Button>
 
       <Button variant="contained" color="primary">
+        <Link href="/adminsetupshow">Setup Show</Link>
+      </Button>
+
+      <Button variant="contained" color="primary">
         <Link href="/">BACK TO HOME</Link>
       </Button>
 

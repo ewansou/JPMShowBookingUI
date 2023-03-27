@@ -9,9 +9,12 @@ import AdminRetrieveAllShowsSeatings from "./components/AdminRetrieveAllShowsSea
 import AdminViewShowByShowNumber from "./components/AdminViewShowByShowNumber";
 import AdminViewShowSeatingsByShowNumber from "./components/AdminViewShowSeatingsByShowNumber";
 import AdminViewShowSeatingsByShowNumberAndStatus from "./components/AdminViewShowSeatingsByShowNumberAndStatus";
+import AdminSetupShow from "./components/AdminSetupShow";
 
 import Buyer from "./components/Buyer";
 import BuyerRetrieveAvailableSeatingsByShowNumber from "./components/BuyerRetrieveAvailableSeatingsByShowNumber";
+import BuyerBookSeats from "./components/BuyerBookSeats";
+import BuyerCancelTicket from "./components/BuyerCancelTicket";
 
 import { ThemeProvider } from '@material-ui/core/styles'
 import theme from "./theme";
@@ -72,6 +75,12 @@ const App = () => {
             />
             <DynamicLayout
             exact
+            path="/adminsetupshow"
+            component={AdminSetupShow}
+            layout="PHOTO10_PAGE"
+            />
+            <DynamicLayout
+            exact
             path="/buyer"
             component={Buyer}
             layout="PHOTO10_PAGE"
@@ -82,7 +91,6 @@ const App = () => {
             component={BuyerRetrieveAvailableSeatingsByShowNumber}
             layout="PHOTO10_PAGE"
             />
-            {/*
             <DynamicLayout
             exact
             path="/buyerbookseats"
@@ -95,7 +103,6 @@ const App = () => {
             component={BuyerCancelTicket}
             layout="PHOTO10_PAGE"
             />
-          */}
           </Switch>
         </div>
       </Router>
