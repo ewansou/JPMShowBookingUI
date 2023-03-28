@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   button: {
-    width: 100,
+    width: 200,
     fontSize: 20,
     color: "#FFFFFF",
   }

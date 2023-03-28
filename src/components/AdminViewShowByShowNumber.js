@@ -6,6 +6,7 @@ import GeneralButton from "./GeneralButton";
 import SingleRowFiveColumnTable from "./SingleRowFiveColumnTable";
 import SubmitButton from "./SubmitButton";
 import { API_BASE } from "../config/constants";
+import TextField from '@mui/material/TextField';
 
 function AdminViewShowByShowNumber() {
 
@@ -37,13 +38,8 @@ function AdminViewShowByShowNumber() {
 
         <Grid item xs={8} sm={12}>
           <h2>Please enter a show number below</h2>
-          <input
-            type="number"
-            className="form-control"
-            id="show-number"
-            placeholder="Enter Show Number"
-            value={showNumber}
-            onChange={e => setShowNumber(e.target.value)} />
+          <TextField id="standard-basic" label="Show Number" variant="standard"
+          value={showNumber} onChange={e => setShowNumber(e.target.value)} />
         </Grid>
 
         <Grid item xs={8} sm={12}>
