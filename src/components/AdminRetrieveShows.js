@@ -1,7 +1,9 @@
 import React,  { useEffect, useState }  from "react";
-import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Container from '@mui/material/Container';
+import GeneralButton from "./GeneralButton";
 import axios from "axios";
+import FiveColumnTable from "./FiveColumnTable";
 
 function AdminRetrieveShows() {
 
@@ -12,42 +14,25 @@ function AdminRetrieveShows() {
        .then(({ data }) => {
            updateShowsDetails(data);
        })
-    
  }, []);
 
   return (
-    <div>
-      <p>Below are the list of shows in system</p>
+    <Container fixed>
+      <h1>Below are the list of shows in system</h1>
+      <Grid container spacing={2}>
 
-      <table>
-        <thead>
-          <tr>
-            <th>showNumber</th>
-            <th>numberOfRows</th>
-            <th>numberOfSeatsPerRow</th>
-            <th>totalNumberOfSeats</th>
-            <th>cancellationWindowInMinutes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {showsDetails.map(item => {
-            return (
-              <tr key={item.id}>
-                <td>{ item.showNumber }</td>
-                <td>{ item.numberOfRows }</td>
-                <td>{ item.numberOfSeatsPerRow }</td>
-                <td>{ item.totalNumberOfSeats }</td>
-                <td>{ item.cancellationWindowInMinutes }</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+    <FiveColumnTable data={showsDetails}/>
 
-      <Button variant="contained" color="primary">
-        <Link href="/admin">BACK TO ADMIN MENU</Link>
-      </Button>
-    </div>
+    <Grid item xs={8} sm={12}>
+      <GeneralButton 
+      title="BACK TO ADMIN MENU" 
+      size="large"
+      variant="contained"
+      url="/admin" />
+    </Grid>
+
+    </Grid>
+    </Container>
   );
 }
 

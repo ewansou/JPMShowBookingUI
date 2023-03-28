@@ -1,9 +1,16 @@
 import { createTheme } from '@mui/material/styles';
+import { blueGrey, lightBlue } from "@material-ui/core/colors"; 
 
-const theme = createTheme({
-  palette: {
-    info: { 500: '#F26522' },
-    color: '#FFFFFF'
-  },
+export const theme = createTheme({  
+  palette: {    
+      primary: {      
+          main: lightBlue[500],      
+          light: lightBlue[300],      
+          dark: lightBlue[700],    
+      },    
+      secondary: {      
+          main: blueGrey[700],      
+          light: blueGrey[500],    
+      }
+  }
 })
-export default theme

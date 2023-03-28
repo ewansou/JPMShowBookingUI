@@ -1,55 +1,48 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Link from "@material-ui/core/Link";
-
-import { makeStyles } from '@material-ui/styles'
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    margin: 10,
-    width: 500,
-    height: 100,
-    color: '#FFFFFF',
-    fontSize: 20,
-    background: '#F26522'
-  },
-  hover: {
-    "&:hover": {
-      backgroundColor: 'rgb(7, 177, 77, 0.42)'
-    },
-  }
-}))
+import Grid from "@material-ui/core/Grid";
+import Container from '@mui/material/Container';
+import GeneralButton from "./GeneralButton";
 
 function BuyerMenu() {
-  const classes = useStyles()
-
   return (
-    <div>
-      <p>Buyer Menu</p>
+    <Container fixed>
+      <h1>Buyer Menu</h1>
+      <Grid container spacing={2}>
 
-      <ButtonGroup
-        orientation="vertical"
-      >
+      <Grid item xs={8} sm={12}>
+        <GeneralButton 
+        title="Retrieve Available Seats By Show Number" 
+        size="large"
+        variant="contained"
+        url="/buyerretrieveavailableseatingsbyshownumber" />
+      </Grid>
 
-      <Button className={classes.root}>
-        <Link underline="none" color="white" href="/buyerretrieveavailableseatingsbyshownumber">Retrieve Available Seats By Show Number</Link>
-      </Button>
+      <Grid item xs={8} sm={12}>
+        <GeneralButton 
+        title="Book Seats" 
+        size="large"
+        variant="contained"
+        url="/buyerbookseats" />
+      </Grid>
 
-      <Button className={classes.root}>
-        <Link underline="none" href="/buyerbookseats">Book Seats</Link>
-      </Button>
+      <Grid item xs={8} sm={12}>
+        <GeneralButton 
+        title="Cancel Ticket" 
+        size="large"
+        variant="contained"
+        url="/buyercancelticket" />
+      </Grid>
 
-      <Button className={classes.root}>
-        <Link underline="none" href="/buyercancelticket">Cancel Ticket</Link>
-      </Button>
+      <Grid item xs={8} sm={12}>
+        <GeneralButton 
+        title="BACK TO HOME" 
+        size="large"
+        variant="contained"
+        url="/" />
+      </Grid>
     
-      <Button className={classes.root}>
-        <Link underline="none" href="/">BACK TO HOME</Link>
-      </Button>
-      
-      </ButtonGroup>
-    </div>
+      </Grid>
+    </Container>
   );
 }
 

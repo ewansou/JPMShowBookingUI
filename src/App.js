@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Switch } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 
 import LandingPage from "./components/LandingPage";
 
@@ -17,10 +17,8 @@ import BuyerBookSeats from "./components/BuyerBookSeats";
 import BuyerCancelTicket from "./components/BuyerCancelTicket";
 
 import { ThemeProvider } from '@material-ui/core/styles'
-import theme from "./theme";
+import { theme } from "./theme"
 import CssBaseline from '@material-ui/core/CssBaseline'
-
-import DynamicLayout from "./router/DynamicLayout";
 
 import { history } from "./helpers/history";
 
@@ -31,78 +29,42 @@ const App = () => {
       <Router history={history}>
         <div className="App">
           <Switch>
-            <DynamicLayout
-              exact
-              path="/"
-              component={LandingPage}
-              layout="LANDING_NAV"
-            />
-            <DynamicLayout
-              exact
-              path="/admin"
-              component={Admin}
-              layout="PHOTO10_PAGE"
-            />
-            <DynamicLayout
-              exact
-              path="/adminretrieveShows"
-              component={AdminRetrieveShows}
-              layout="PHOTO10_PAGE"
-            />
-            <DynamicLayout
-              exact
-              path="/adminretrieveallshowsseatings"
-              component={AdminRetrieveAllShowsSeatings}
-              layout="PHOTO10_PAGE"
-            />
-            <DynamicLayout
-              exact
-              path="/adminviewshowbyshownumber"
-              component={AdminViewShowByShowNumber}
-              layout="PHOTO10_PAGE"
-            />
-            <DynamicLayout
-              exact
-              path="/adminretrieveshowseatingsbyshownumber"
-              component={AdminViewShowSeatingsByShowNumber}
-              layout="PHOTO10_PAGE"
-            />
-            <DynamicLayout
-              exact
-              path="/adminretrieveshowseatingsbyshownumberandstatus"
-              component={AdminViewShowSeatingsByShowNumberAndStatus}
-              layout="PHOTO10_PAGE"
-            />
-            <DynamicLayout
-              exact
-              path="/adminsetupshow"
-              component={AdminSetupShow}
-              layout="PHOTO10_PAGE"
-            />
-            <DynamicLayout
-              exact
-              path="/buyer"
-              component={Buyer}
-              layout="PHOTO10_PAGE"
-            />
-            <DynamicLayout
-              exact
-              path="/buyerretrieveavailableseatingsbyshownumber"
-              component={BuyerRetrieveAvailableSeatingsByShowNumber}
-              layout="PHOTO10_PAGE"
-            />
-            <DynamicLayout
-              exact
-              path="/buyerbookseats"
-              component={BuyerBookSeats}
-              layout="PHOTO10_PAGE"
-            />
-            <DynamicLayout
-              exact
-              path="/buyercancelticket"
-              component={BuyerCancelTicket}
-              layout="PHOTO10_PAGE"
-            />
+            <Route exact path="/">
+              <LandingPage />
+            </Route>
+            <Route exact path="/admin">
+              <Admin />
+            </Route>
+            <Route exact path="/adminretrieveShows">
+              <AdminRetrieveShows />
+            </Route>
+            <Route exact path="/adminretrieveallshowsseatings">
+              <AdminRetrieveAllShowsSeatings />
+            </Route>
+            <Route exact path="/adminviewshowbyshownumber">
+              <AdminViewShowByShowNumber />
+            </Route>
+            <Route exact path="/adminretrieveshowseatingsbyshownumber">
+              <AdminViewShowSeatingsByShowNumber />
+            </Route>
+            <Route exact path="/adminretrieveshowseatingsbyshownumberandstatus">
+              <AdminViewShowSeatingsByShowNumberAndStatus />
+            </Route>
+            <Route exact path="/adminsetupshow">
+              <AdminSetupShow />
+            </Route>
+            <Route exact path="/buyer">
+              <Buyer />
+            </Route>
+            <Route exact path="/buyerretrieveavailableseatingsbyshownumber">
+              <BuyerRetrieveAvailableSeatingsByShowNumber />
+            </Route>
+            <Route exact path="/buyerbookseats">
+              <BuyerBookSeats />
+            </Route>
+            <Route exact path="/buyercancelticket">
+              <BuyerCancelTicket />
+            </Route>
           </Switch>
         </div>
       </Router>

@@ -1,7 +1,9 @@
 import React,  { useEffect, useState }  from "react";
-import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Container from '@mui/material/Container';
+import GeneralButton from "./GeneralButton";
 import axios from "axios";
+import SixColumnTable from "./SixColumnTable";
 
 function AdminRetrieveAllShowsSeatings() {
 
@@ -12,44 +14,25 @@ function AdminRetrieveAllShowsSeatings() {
        .then(({ data }) => {
         updateAllShowsSeatings(data);
        })
-    
  }, []);
 
   return (
-    <div>
-      <p>Below are the list of shows and their seatings in system</p>
+    <Container fixed>
+      <h1>Show Seatings Details</h1>
+      <Grid container spacing={2}>
 
-      <table>
-        <thead>
-          <tr>
-            <th>showNumber</th>
-            <th>seatNumber</th>
-            <th>seatStatus</th>
-            <th>buyerMobile</th>
-            <th>ticketNumber</th>
-            <th>validTill</th>
-          </tr>
-        </thead>
-        <tbody>
-          {allShowsSeatings.map(item => {
-            return (
-              <tr key={item.id}>
-                <td>{ item.showNumber }</td>
-                <td>{ item.seatNumber }</td>
-                <td>{ item.seatStatus }</td>
-                <td>{ item.buyerMobile }</td>
-                <td>{ item.ticketNumber }</td>
-                <td>{ item.validTill }</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+    <SixColumnTable data={allShowsSeatings}/>
 
-      <Button variant="contained" color="primary">
-        <Link href="/admin">BACK TO ADMIN MENU</Link>
-      </Button>
-    </div>
+    <Grid item xs={8} sm={12}>
+      <GeneralButton 
+      title="BACK TO ADMIN MENU" 
+      size="large"
+      variant="contained"
+      url="/admin" />
+    </Grid>
+
+    </Grid>
+    </Container>
   );
 }
 

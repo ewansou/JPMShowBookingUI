@@ -1,41 +1,73 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Container from '@mui/material/Container';
+import GeneralButton from "./GeneralButton";
 
 function AdminMenu() {
   return (
-    <div>
-      <p>Admin Menu</p>
+    <Container fixed>
+      <h1>Admin Menu</h1>
+      <Grid container spacing={2}>
 
-      <Button variant="contained" color="primary">
-        <Link href="/adminretrieveShows">Retrieve Shows</Link>
-      </Button>
+      <Grid item xs={8} sm={12}>
+        <GeneralButton 
+        title="Retrieve Shows" 
+        size="large"
+        variant="contained"
+        url="/adminretrieveShows" />
+      </Grid>
 
-      <Button variant="contained" color="primary">
-        <Link href="/adminretrieveallshowsseatings">Retrieve All Shows Seatings</Link>
-      </Button>
+      <Grid item xs={8} sm={12}>
+        <GeneralButton 
+        title="Retrieve All Shows Seatings" 
+        size="large"
+        variant="contained"
+        url="/adminretrieveallshowsseatings" />
+      </Grid>
 
-      <Button variant="contained" color="primary">
-        <Link href="/adminviewshowbyshownumber">View Show By Show Number</Link>
-      </Button>
+      <Grid item xs={8} sm={12}>
+        <GeneralButton 
+        title="View Show By Show Number" 
+        size="large"
+        variant="contained"
+        url="/adminviewshowbyshownumber" />
+      </Grid>
 
-      <Button variant="contained" color="primary">
-        <Link href="/adminretrieveshowseatingsbyshownumber">View Show Seatings By Show Number</Link>
-      </Button>
+      <Grid item xs={8} sm={12}>
+        <GeneralButton 
+        title="View Show Seatings By Show Number" 
+        size="large"
+        variant="contained"
+        url="/adminretrieveshowseatingsbyshownumber" />
+      </Grid>
 
-      <Button variant="contained" color="primary">
-        <Link href="/adminretrieveshowseatingsbyshownumberandstatus">View Show Seatings By Show Number and Status</Link>
-      </Button>
+      <Grid item xs={8} sm={12}>
+        <GeneralButton 
+        title="View Show Seatings By Show Number and Status" 
+        size="large"
+        variant="contained"
+        url="/adminretrieveshowseatingsbyshownumberandstatus" />
+      </Grid>
 
-      <Button variant="contained" color="primary">
-        <Link href="/adminsetupshow">Setup Show</Link>
-      </Button>
+      <Grid item xs={8} sm={12}>
+        <GeneralButton 
+        title="Setup Show" 
+        size="large"
+        variant="contained"
+        url="/adminsetupshow" />
+      </Grid>
 
-      <Button variant="contained" color="primary">
-        <Link href="/">BACK TO HOME</Link>
-      </Button>
+      <Grid item xs={8} sm={12}>
+        <GeneralButton 
+        title="BACK TO HOME" 
+        size="large"
+        variant="contained"
+        url="/" />
+      </Grid>
+    
+      </Grid>
 
-    </div>
+    </Container>
   );
 }
 

@@ -1,7 +1,9 @@
 import React,  { useEffect, useState }  from "react";
-import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
 import axios from "axios";
+import Grid from "@material-ui/core/Grid";
+import Container from '@mui/material/Container';
+import GeneralButton from "./GeneralButton";
+import SingleRowFiveColumnTable from "./SingleRowFiveColumnTable";
 
 function AdminViewShowByShowNumber() {
 
@@ -11,6 +13,7 @@ function AdminViewShowByShowNumber() {
   const [showNumber, setShowNumber] = useState('');
 
 const handleSubmit = () => {
+  console.log("Hit handleSubmit");
   setLoading(true);
   setIsError(false);
 
@@ -26,51 +29,44 @@ const handleSubmit = () => {
 }
 
   return (
-    <div>
-      <p>Please enter a show number below</p>
-      <div>
-          <label htmlFor="job" className="">Show Number</label>
-          <input
-            type="number"
-            className="form-control"
-            id="show-number"
-            placeholder="Enter Show Number"
-            value={showNumber}
-            onChange={e => setShowNumber(e.target.value)} />
-        </div>
+    <Container fixed>
+    <h1>View Show By Show Number</h1>
+    <Grid container spacing={2}>
 
-        {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
+    <Grid item xs={8} sm={12}>
+    <h2>Please enter a show number below</h2>
+    <input
+      type="number"
+      className="form-control"
+      id="show-number"
+      placeholder="Enter Show Number"
+      value={showNumber}
+      onChange={e => setShowNumber(e.target.value)} />
+    </Grid>
 
-        <button
-          type="submit"
-          className=""
-          onClick={handleSubmit}
-          disabled={loading}
-        >{loading ? 'Loading...' : 'Submit'}</button>
+    <Grid item xs={8} sm={12}>
+      <button
+      type="submit"
+      className=""
+      onClick={handleSubmit}
+      disabled={loading}
+      >{loading ? 'Loading...' : 'Submit'}</button>
+    </Grid>
 
-      <table>
-        <thead>
-          <tr>
-            <th>showNumber</th>
-            <th>numberOfRows</th>
-            <th>numberOfSeatsPerRow</th>
-            <th>totalNumberOfSeats</th>
-            <th>cancellationWindowInMinutes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <td>{showDetail.showNumber}</td>
-          <td>{showDetail.numberOfRows}</td>
-          <td>{showDetail.numberOfSeatsPerRow}</td>
-          <td>{showDetail.totalNumberOfSeats}</td>
-          <td>{showDetail.cancellationWindowInMinutes}</td>
-        </tbody>
-      </table>
+    {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
+    
+    <SingleRowFiveColumnTable data={showDetail}/>
 
-      <Button variant="contained" color="primary">
-        <Link href="/admin">BACK TO ADMIN MENU</Link>
-      </Button>
-    </div>
+    <Grid item xs={8} sm={12}>
+      <GeneralButton 
+      title="BACK TO ADMIN MENU" 
+      size="large"
+      variant="contained"
+      url="/admin" />
+    </Grid>
+
+    </Grid>
+    </Container>
   );
 }
 
