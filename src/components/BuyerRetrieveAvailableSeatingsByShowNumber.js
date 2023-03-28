@@ -1,7 +1,9 @@
 import React,  { useEffect, useState }  from "react";
-import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
 import axios from "axios";
+import Grid from "@material-ui/core/Grid";
+import Container from '@mui/material/Container';
+import GeneralButton from "./GeneralButton";
+import SubmitButton from "./SubmitButton";
 
 function BuyerRetrieveAvailableSeatingsByShowNumber() {
 
@@ -27,41 +29,50 @@ const handleSubmit = () => {
 }
 
   return (
-    <div>
-      <p>Please enter show number below</p>
-        <div>
-          <label htmlFor="showNumber" className="">Show Number</label>
-          <input
-            type="number"
-            className="form-control"
-            id="show-number"
-            placeholder="Enter Show Number"
-            value={showNumber}
-            onChange={e => setShowNumber(e.target.value)} />
-        </div>
+    <Container fixed>
+    <h1>View Available Seats By Show Number</h1>
+    <Grid container spacing={2}>
+
+    <Grid item xs={8} sm={12}>
+    <h2>Please enter a show number below</h2>
+    <input
+      type="number"
+      className="form-control"
+      id="show-number"
+      placeholder="Enter Show Number"
+      value={showNumber}
+      onChange={e => setShowNumber(e.target.value)} />
+    </Grid>
 
         {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
 
-        <button
-          type="submit"
-          className=""
-          onClick={handleSubmit}
-          disabled={loading}
-        >{loading ? 'Loading...' : 'Submit'}</button>
+        <Grid item xs={8} sm={12}>
+        <SubmitButton 
+        size="small"
+        variant="contained"
+        title={loading ? 'Loading...' : 'Submit'}
+        onClick={handleSubmit} />
+      </Grid>
 
-        <div>
+      <Grid item xs={8} sm={12}>
           <p>The available seats are </p>
           {showSeatingsDetail.map(item => {
             return (
-              <span>| {item} | </span>
+              <span>{item}   | </span>
             );
           })}
-        </div>
+          </Grid>
 
-      <Button variant="contained" color="primary">
-        <Link href="/buyer">BACK TO BUYER MENU</Link>
-      </Button>
-    </div>
+        <Grid item xs={8} sm={12}>
+        <GeneralButton 
+        title="BACK TO BUYER MENU" 
+        size="large"
+        variant="contained"
+        url="/buyer" />
+      </Grid>
+  
+      </Grid>
+      </Container>
   );
 }
 

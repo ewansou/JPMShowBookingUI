@@ -11,10 +11,18 @@ function AdminMenu() {
 
       <Grid item xs={8} sm={12}>
         <GeneralButton 
-        title="Retrieve Shows" 
+        title="View Details of All Shows" 
         size="large"
         variant="contained"
         url="/adminretrieveShows" />
+      </Grid>
+
+      <Grid item xs={8} sm={12}>
+        <GeneralButton 
+        title="View Details of Show By Show Number" 
+        size="large"
+        variant="contained"
+        url="/adminviewshowbyshownumber" />
       </Grid>
 
       <Grid item xs={8} sm={12}>
@@ -23,14 +31,6 @@ function AdminMenu() {
         size="large"
         variant="contained"
         url="/adminretrieveallshowsseatings" />
-      </Grid>
-
-      <Grid item xs={8} sm={12}>
-        <GeneralButton 
-        title="View Show By Show Number" 
-        size="large"
-        variant="contained"
-        url="/adminviewshowbyshownumber" />
       </Grid>
 
       <Grid item xs={8} sm={12}>

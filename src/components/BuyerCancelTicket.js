@@ -1,7 +1,10 @@
 import React,  { useEffect, useState }  from "react";
-import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
 import axios from "axios";
+import Grid from "@material-ui/core/Grid";
+import Container from '@mui/material/Container';
+import GeneralButton from "./GeneralButton";
+import SubmitButton from "./SubmitButton";
+
 
 function BuyerCancelTicket() {
 
@@ -34,46 +37,54 @@ const handleSubmit = () => {
 }
 
   return (
-    <div>
-      <p>Please enter details below to cancel your ticket</p>
 
-        <div>
-        <label htmlFor="ticketNumber" className="">Ticket Number</label>
-        <input
-          type="text"
-          className="form-control"
-          id="ticket-number"
-          placeholder="Enter Your Ticket Number"
-          value={ticketNumber}
-          onChange={e => setTicketNumber(e.target.value)} />
-        </div>
+    <Container fixed>
+    <h1>Please enter details below to cancel your ticket</h1>
+    <Grid container spacing={2}>
 
-        <div>
-        <label htmlFor="mobileNumber" className="">Mobile Number</label>
-        <input
-          type="text"
-          className="form-control"
-          id="mobile-number"
-          placeholder="Enter Your Mobile Number"
-          value={mobileNumber}
-          onChange={e => setMobileNumber(e.target.value)} />
-        </div>
+    <Grid item xs={8} sm={12}>
+    <h2>Please enter your ticket number below</h2>
+    <input
+      type="text"
+      className="form-control"
+      id="ticket-number"
+      placeholder="Enter Your Ticket Number"
+      value={ticketNumber}
+      onChange={e => setTicketNumber(e.target.value)} />
+    </Grid>
+
+    <Grid item xs={8} sm={12}>
+    <h2>Mobile Number</h2>
+    <input
+      type="text"
+      className="form-control"
+      id="mobile-number"
+      placeholder="Enter Your Mobile Number"
+      value={mobileNumber}
+      onChange={e => setMobileNumber(e.target.value)} />
+    </Grid>
 
         {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
 
-        <button
-          type="submit"
-          className=""
-          onClick={handleSubmit}
-          disabled={loading}
-        >{loading ? 'Loading...' : 'Submit'}</button>
+        <Grid item xs={8} sm={12}>
+        <SubmitButton 
+        size="small"
+        variant="contained"
+        title={loading ? 'Loading...' : 'Submit'}
+        onClick={handleSubmit} />
+      </Grid>
 
-        <pre>{JSON.stringify(response, null, 2)}</pre>
+        <h3>{response}</h3>
 
-      <Button variant="contained" color="primary">
-        <Link href="/buyer">BACK TO BUYER MENU</Link>
-      </Button>
-    </div>
+        <Grid item xs={8} sm={12}>
+        <GeneralButton 
+        title="BACK TO ADMIN MENU" 
+        size="large"
+        variant="contained"
+        url="/buyer" />
+      </Grid>
+      </Grid>
+      </Container>
   );
 }
 

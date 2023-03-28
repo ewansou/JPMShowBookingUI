@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Container from '@mui/material/Container';
 import GeneralButton from "./GeneralButton";
 import axios from "axios";
+import SubmitButton from "./SubmitButton";
 
 function AdminSetupShow() {
 
@@ -89,22 +90,23 @@ const handleSubmit = () => {
 
     {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
 
-    <button
-    type="submit"
-    className=""
-    onClick={handleSubmit}
-    disabled={loading}
-  >{loading ? 'Loading...' : 'Submit'}</button>
+    <Grid item xs={8} sm={12}>
+      <SubmitButton 
+      size="small"
+      variant="contained"
+      title={loading ? 'Loading...' : 'Submit'}
+      onClick={handleSubmit} />
+    </Grid>
+
+    <h3>{response}</h3>
 
   <Grid item xs={8} sm={12}>
-  <GeneralButton 
-  title="BACK TO ADMIN MENU" 
-  size="large"
-  variant="contained"
-  url="/admin" />
-</Grid>
-
-<p>{response}</p>
+    <GeneralButton 
+    title="BACK TO ADMIN MENU" 
+    size="large"
+    variant="contained"
+    url="/admin" />
+  </Grid>
 
     </Grid>
     </Container>

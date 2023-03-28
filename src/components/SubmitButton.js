@@ -12,15 +12,16 @@ const useStyles = makeStyles({
   }
 });
 
-const SubmitButton = ({ title, onClick }) => {
+const SubmitButton = (props) => {
   const classes = useStyles();
   return (
-    <button
-    type="submit"
-    className=""
-    onClick={onClick}
-    disabled={loading}
-  >{title}</button>
+    <Button
+    color="primary"
+    variant={props.variant}
+    size={props.size}
+    className={classes.button}
+    onClick={props.onClick}
+  >{ props.title }</Button>
 
   )
 }

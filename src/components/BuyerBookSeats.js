@@ -1,7 +1,12 @@
 import React,  { useEffect, useState }  from "react";
-import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
 import axios from "axios";
+import FiveColumnTable from "./FiveColumnTable";
+import Grid from "@material-ui/core/Grid";
+import Container from '@mui/material/Container';
+import GeneralButton from "./GeneralButton";
+import FourColumnTable from "./FourColumnTable";
+import SubmitButton from "./SubmitButton";
+
 
 function BuyerBookSeats() {
 
@@ -62,117 +67,98 @@ const handleSubmit = () => {
 }
 
   return (
-    <div>
-      <p>Check Availabiliy. Please enter show number you want to buy tickets for</p>
-        <div>
-          <label htmlFor="showNumber" className="">Show Number</label>
+    <Container fixed>
+    <h1>Check Availabiliy. Please enter show number you want to buy tickets for</h1>
+    <Grid container spacing={2}>
+
+    <Grid item xs={8} sm={12}>
+    <h2>Please enter a show number below</h2>
+    <input
+      type="number"
+      className="form-control"
+      id="show-number"
+      placeholder="Enter Show Number"
+      value={buyShowNumber}
+      onChange={e => setBuyShowNumber(e.target.value)} />
+    </Grid>
+
+      {buyIsError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
+
+      <Grid item xs={8} sm={12}>
+        <SubmitButton 
+        size="small"
+        variant="contained"
+        title={buyLoading ? 'Loading...' : 'Submit'}
+        onClick={getAvailableSeats} />
+      </Grid>
+
+      <Grid item xs={8} sm={12}>
+          <p>The available seats are </p>
+          {availableShowSeating.map(item => {
+            return (
+              <span>{item}   | </span>
+            );
+          })}
+          </Grid>
+
+
+          <h2>Please fill in table below to book seats</h2>
+
+          <Grid item xs={8} sm={12}>
+          <h2>Please enter a show number below</h2>
           <input
             type="number"
             className="form-control"
             id="show-number"
             placeholder="Enter Show Number"
-            value={buyShowNumber}
-            onChange={e => setBuyShowNumber(e.target.value)} />
-        </div>
+            value={showNumber}
+            onChange={e => setShowNumber(e.target.value)} />
+          </Grid>
 
-        {buyIsError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
-
-        <button
-          type="submit"
-          className=""
-          onClick={getAvailableSeats}
-          disabled={loading}
-        >{buyLoading ? 'Loading...' : 'Submit'}</button>
-
-        <div>
-          <p>The available seats are </p>
-          {availableShowSeating.map(item => {
-            return (
-              <span>| {item} | </span>
-            );
-          })}
-        </div>
-
-
-      <p>Please fill in table below to book seats</p>
-
-        <div>
-          <label htmlFor="showNumber" className="">Show Number</label>
+          <Grid item xs={8} sm={12}>
+          <h2>Mobile Number</h2>
           <input
             type="number"
             className="form-control"
-            id="show-number"
-            placeholder="Enter New Show Number"
-            value={showNumber}
-            onChange={e => setShowNumber(e.target.value)} />
-        </div>
+            id="mobile-number"
+            placeholder="Enter Mobile Number"
+            value={mobileNumber}
+            onChange={e => setMobileNumber(e.target.value)} />
+          </Grid>
 
-        <div>
-        <label htmlFor="mobileNumber" className="">Mobile Number</label>
-        <input
-          type="text"
-          className="form-control"
-          id="mobile-number"
-          placeholder="Enter Mobile Number"
-          value={mobileNumber}
-          onChange={e => setMobileNumber(e.target.value)} />
-        </div>
-
-        <div>
-        <label htmlFor="seats" className="">Please Enter The Seats You want To Book</label>
-        <input
-          type="text"
-          className="form-control"
-          id="seats"
-          placeholder="Please Enter The Seats You want To Book"
-          value={seats}
-          onChange={e => setSeats(e.target.value)} />
-        </div>
+          <Grid item xs={8} sm={12}>
+          <h2>Please Enter The Seats You want To Book</h2>
+          <input
+            type="text"
+            className="form-control"
+            id="seats"
+            placeholder="Please Enter The Seats You want To Book"
+            value={seats}
+            onChange={e => setSeats(e.target.value)} />
+          </Grid>
 
         {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
 
-        <button
-          type="submit"
-          className=""
-          onClick={handleSubmit}
-          disabled={loading}
-        >{loading ? 'Loading...' : 'Submit'}</button>
+        <Grid item xs={8} sm={12}>
+        <SubmitButton 
+        size="small"
+        variant="contained"
+        title={loading ? 'Loading...' : 'Submit'}
+        onClick={handleSubmit} />
+      </Grid>
 
-        <table>
-        <thead>
-          <tr>
-            <th>showNumber</th>
-            <th>seatNumber</th>
-            <th>ticketNumber</th>
-            <th>validTill</th>
-          </tr>
-        </thead>
-        <tbody>
-          {response.map(item => {
-            return (
-              <tr key={item.id}>
-                <td>{item.showNumber}</td>
-                <td>{item.seatNumber}</td>
-                <td>{item.ticketNumber}</td>
-                <td>{item.validTill}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <FourColumnTable data={response}/>
 
-      <Button variant="contained" color="primary">
-        <Link href="/buyer">BACK TO BUYER MENU</Link>
-      </Button>
-    </div>
+      <Grid item xs={8} sm={12}>
+      <GeneralButton 
+      title="BACK TO BUYER MENU" 
+      size="large"
+      variant="contained"
+      url="/buyer" />
+    </Grid>
+    </Grid>
+    </Container>
   );
 }
 
 export default BuyerBookSeats;
-
-/*
-{
-  "B2": "6ee1ed3e-d9ea-426d-b804-64bfd93df482",
-  "B1": "aff349cd-600d-425f-929d-893c2728d3e8"
-}
-*/

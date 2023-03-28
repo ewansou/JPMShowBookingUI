@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Container from '@mui/material/Container';
 import GeneralButton from "./GeneralButton";
 import SingleRowFiveColumnTable from "./SingleRowFiveColumnTable";
+import SubmitButton from "./SubmitButton";
 
 function AdminViewShowByShowNumber() {
 
@@ -45,12 +46,11 @@ const handleSubmit = () => {
     </Grid>
 
     <Grid item xs={8} sm={12}>
-      <button
-      type="submit"
-      className=""
-      onClick={handleSubmit}
-      disabled={loading}
-      >{loading ? 'Loading...' : 'Submit'}</button>
+      <SubmitButton 
+      size="small"
+      variant="contained"
+      title={loading ? 'Loading...' : 'Submit'}
+      onClick={handleSubmit} />
     </Grid>
 
     {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}

@@ -1,7 +1,11 @@
 import React,  { useEffect, useState }  from "react";
-import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
 import axios from "axios";
+import Grid from "@material-ui/core/Grid";
+import Container from '@mui/material/Container';
+import GeneralButton from "./GeneralButton";
+import SixColumnTable from "./SixColumnTable";
+import SubmitButton from "./SubmitButton";
+
 
 function AdminViewShowSeatingsByShowNumber() {
 
@@ -26,59 +30,43 @@ const handleSubmit = () => {
 }
 
   return (
-    <div>
-      <p>Please enter a show number below</p>
-      <div>
-          <label htmlFor="job" className="">Show Number</label>
-          <input
-            type="number"
-            className="form-control"
-            id="show-number"
-            placeholder="Enter Show Number"
-            value={showNumber}
-            onChange={e => setShowNumber(e.target.value)} />
-        </div>
+    <Container fixed>
+    <h1>Please enter a show number below</h1>
+    <Grid container spacing={2}>
+
+    <Grid item xs={8} sm={12}>
+    <h2>Please enter a show number below</h2>
+    <input
+      type="number"
+      className="form-control"
+      id="show-number"
+      placeholder="Enter Show Number"
+      value={showNumber}
+      onChange={e => setShowNumber(e.target.value)} />
+    </Grid>
 
         {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
 
-        <button
-          type="submit"
-          className=""
-          onClick={handleSubmit}
-          disabled={loading}
-        >{loading ? 'Loading...' : 'Submit'}</button>
+        <Grid item xs={8} sm={12}>
+        <SubmitButton 
+        size="small"
+        variant="contained"
+        title={loading ? 'Loading...' : 'Submit'}
+        onClick={handleSubmit} />
+      </Grid>
 
-      <table>
-        <thead>
-          <tr>
-            <th>showNumber</th>
-            <th>seatNumber</th>
-            <th>seatStatus</th>
-            <th>buyerMobile</th>
-            <th>ticketNumber</th>
-            <th>validTill</th>
-          </tr>
-        </thead>
-        <tbody>
-          {showSeatingsDetail.map(item => {
-            return (
-              <tr key={item.id}>
-                <td>{ item.showNumber }</td>
-                <td>{ item.seatNumber }</td>
-                <td>{ item.seatStatus }</td>
-                <td>{ item.buyerMobile }</td>
-                <td>{ item.ticketNumber }</td>
-                <td>{ item.validTill }</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <SixColumnTable data={showSeatingsDetail}/>
 
-      <Button variant="contained" color="primary">
-        <Link href="/admin">BACK TO ADMIN MENU</Link>
-      </Button>
-    </div>
+      <Grid item xs={8} sm={12}>
+      <GeneralButton 
+      title="BACK TO ADMIN MENU" 
+      size="large"
+      variant="contained"
+      url="/admin" />
+    </Grid>
+
+    </Grid>
+    </Container>
   );
 }
 
