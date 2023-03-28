@@ -20,29 +20,29 @@ const FourColumnTable = ({ data }) => {
   const classes = useStyles();
   return (
     <TableContainer component={Paper}>
-    <Table aria-label="simple table">
-      <TableHead>
-        <TableRow>
-          <TableCell>Show Number</TableCell>
-          <TableCell align="left">Seat Number</TableCell>
-          <TableCell align="left">Ticket Number</TableCell>
-          <TableCell align="left">Valid Till (for cancellation)</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {data.map((row) => (
-          <TableRow key={row.id}>
-            <TableCell component="th" scope="row">
-              {row.showNumber}
-            </TableCell>
-            <TableCell align="left">{row.seatNumber}</TableCell>
-            <TableCell align="left">{row.ticketNumber}</TableCell>
-            <TableCell align="left">{row.validTill}</TableCell>
+      <Table aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Show Number</TableCell>
+            <TableCell align="left">Seat Number</TableCell>
+            <TableCell align="left">Ticket Number</TableCell>
+            <TableCell align="left">Valid Till (for cancellation)</TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </TableContainer>
+        </TableHead>
+        <TableBody>
+          {data.map((row) => (
+            <TableRow key={row.id}>
+              <TableCell component="th" scope="row">
+                {row.showNumber}
+              </TableCell>
+              <TableCell align="left">{row.seatNumber}</TableCell>
+              <TableCell align="left">{row.ticketNumber}</TableCell>
+              <TableCell align="left">{row.validTill}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 }
 export default FourColumnTable

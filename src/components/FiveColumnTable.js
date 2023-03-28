@@ -20,31 +20,31 @@ const FiveColumnTable = ({ data }) => {
   const classes = useStyles();
   return (
     <TableContainer component={Paper}>
-    <Table aria-label="simple table">
-      <TableHead>
-        <TableRow>
-          <TableCell>Show Number</TableCell>
-          <TableCell align="left">No. of Rows</TableCell>
-          <TableCell align="left">No. of Seats Per Row</TableCell>
-          <TableCell align="left">Total no. of Seats</TableCell>
-          <TableCell align="left">Cancellation Windows (in minutes)</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {data.map((row) => (
-          <TableRow key={row.id}>
-            <TableCell component="th" scope="row">
-              {row.showNumber}
-            </TableCell>
-            <TableCell align="left">{row.numberOfRows}</TableCell>
-            <TableCell align="left">{row.numberOfSeatsPerRow}</TableCell>
-            <TableCell align="left">{row.totalNumberOfSeats}</TableCell>
-            <TableCell align="left">{row.cancellationWindowInMinutes}</TableCell>
+      <Table aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Show Number</TableCell>
+            <TableCell align="left">No. of Rows</TableCell>
+            <TableCell align="left">No. of Seats Per Row</TableCell>
+            <TableCell align="left">Total no. of Seats</TableCell>
+            <TableCell align="left">Cancellation Windows (in minutes)</TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </TableContainer>
+        </TableHead>
+        <TableBody>
+          {data.map((row) => (
+            <TableRow key={row.id}>
+              <TableCell component="th" scope="row">
+                {row.showNumber}
+              </TableCell>
+              <TableCell align="left">{row.numberOfRows}</TableCell>
+              <TableCell align="left">{row.numberOfSeatsPerRow}</TableCell>
+              <TableCell align="left">{row.totalNumberOfSeats}</TableCell>
+              <TableCell align="left">{row.cancellationWindowInMinutes}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 }
 export default FiveColumnTable

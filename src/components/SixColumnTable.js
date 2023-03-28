@@ -20,33 +20,33 @@ const SixColumnTable = ({ data }) => {
   const classes = useStyles();
   return (
     <TableContainer component={Paper}>
-    <Table aria-label="simple table">
-      <TableHead>
-        <TableRow>
-          <TableCell>Show Number</TableCell>
-          <TableCell align="left">Seat Number</TableCell>
-          <TableCell align="left">Seat Status</TableCell>
-          <TableCell align="left">Buyer Mobile</TableCell>
-          <TableCell align="left">Ticket Number</TableCell>
-          <TableCell align="left">Cancellation Valid Till</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {data.map((row) => (
-          <TableRow key={row.id}>
-            <TableCell component="th" scope="row">
-              {row.showNumber}
-            </TableCell>
-            <TableCell align="left">{row.seatNumber}</TableCell>
-            <TableCell align="left">{row.seatStatus}</TableCell>
-            <TableCell align="left">{row.buyerMobile}</TableCell>
-            <TableCell align="left">{row.ticketNumber}</TableCell>
-            <TableCell align="left">{row.validTill}</TableCell>
+      <Table aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Show Number</TableCell>
+            <TableCell align="left">Seat Number</TableCell>
+            <TableCell align="left">Seat Status</TableCell>
+            <TableCell align="left">Buyer Mobile</TableCell>
+            <TableCell align="left">Ticket Number</TableCell>
+            <TableCell align="left">Cancellation Valid Till</TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </TableContainer>
+        </TableHead>
+        <TableBody>
+          {data.map((row) => (
+            <TableRow key={row.id}>
+              <TableCell component="th" scope="row">
+                {row.showNumber}
+              </TableCell>
+              <TableCell align="left">{row.seatNumber}</TableCell>
+              <TableCell align="left">{row.seatStatus}</TableCell>
+              <TableCell align="left">{row.buyerMobile}</TableCell>
+              <TableCell align="left">{row.ticketNumber}</TableCell>
+              <TableCell align="left">{row.validTill}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 }
 export default SixColumnTable

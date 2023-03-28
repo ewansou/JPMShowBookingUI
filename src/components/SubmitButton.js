@@ -1,5 +1,5 @@
-import { 
-  Button 
+import {
+  Button
 } from "@material-ui/core"
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -16,12 +16,12 @@ const SubmitButton = (props) => {
   const classes = useStyles();
   return (
     <Button
-    color="primary"
-    variant={props.variant}
-    size={props.size}
-    className={classes.button}
-    onClick={props.onClick}
-  >{ props.title }</Button>
+      color="primary"
+      variant={props.variant}
+      size={props.size}
+      className={classes.button}
+      onClick={props.onClick}
+    >{props.title}</Button>
 
   )
 }

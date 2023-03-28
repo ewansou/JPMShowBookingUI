@@ -10,15 +10,15 @@ function LandingPage() {
       <h1>Welcome</h1>
       <Grid container spacing={2}>
         <Grid item xs={8} sm={12}>
-            <GeneralButton 
-            title="Admin" 
+          <GeneralButton
+            title="Admin"
             size="large"
             variant="contained"
             url="/admin" />
         </Grid>
         <Grid item xs={12} sm={12}>
-            <GeneralButton 
-            title="Buyer" 
+          <GeneralButton
+            title="Buyer"
             size="large"
             variant="contained"
             url="/buyer" />

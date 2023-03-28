@@ -1,10 +1,11 @@
-import React,  { useEffect, useState }  from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Container from '@mui/material/Container';
 import GeneralButton from "./GeneralButton";
 import SixColumnTable from "./SixColumnTable";
 import SubmitButton from "./SubmitButton";
+import { API_BASE } from "../config/constants";
 
 
 function AdminViewShowSeatingsByShowNumber() {
@@ -14,58 +15,58 @@ function AdminViewShowSeatingsByShowNumber() {
   const [loading, setLoading] = useState(false);
   const [showNumber, setShowNumber] = useState('');
 
-const handleSubmit = () => {
-  setLoading(true);
-  setIsError(false);
+  const handleSubmit = () => {
+    setLoading(true);
+    setIsError(false);
 
-  const URL = "http://localhost:23008/admin/api/retrieveShowSeatingsByShowNumber?showNumber="
+    const URL = API_BASE + "/admin/api/retrieveShowSeatingsByShowNumber?showNumber="
 
-  axios.get(URL+showNumber).then(res => {    
-    setShowSeatingsDetail(res.data);
-    setLoading(false);
-  }).catch(err => {
-    setLoading(false);
-    setIsError(true);
-  });
-}
+    axios.get(URL + showNumber).then(res => {
+      setShowSeatingsDetail(res.data);
+      setLoading(false);
+    }).catch(err => {
+      setLoading(false);
+      setIsError(true);
+    });
+  }
 
   return (
     <Container fixed>
-    <h1>Please enter a show number below</h1>
-    <Grid container spacing={2}>
+      <h1>Please enter a show number below</h1>
+      <Grid container spacing={2}>
 
-    <Grid item xs={8} sm={12}>
-    <h2>Please enter a show number below</h2>
-    <input
-      type="number"
-      className="form-control"
-      id="show-number"
-      placeholder="Enter Show Number"
-      value={showNumber}
-      onChange={e => setShowNumber(e.target.value)} />
-    </Grid>
+        <Grid item xs={8} sm={12}>
+          <h2>Please enter a show number below</h2>
+          <input
+            type="number"
+            className="form-control"
+            id="show-number"
+            placeholder="Enter Show Number"
+            value={showNumber}
+            onChange={e => setShowNumber(e.target.value)} />
+        </Grid>
 
         {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
 
         <Grid item xs={8} sm={12}>
-        <SubmitButton 
-        size="small"
-        variant="contained"
-        title={loading ? 'Loading...' : 'Submit'}
-        onClick={handleSubmit} />
+          <SubmitButton
+            size="small"
+            variant="contained"
+            title={loading ? 'Loading...' : 'Submit'}
+            onClick={handleSubmit} />
+        </Grid>
+
+        <SixColumnTable data={showSeatingsDetail} />
+
+        <Grid item xs={8} sm={12}>
+          <GeneralButton
+            title="BACK TO ADMIN MENU"
+            size="large"
+            variant="contained"
+            url="/admin" />
+        </Grid>
+
       </Grid>
-
-      <SixColumnTable data={showSeatingsDetail}/>
-
-      <Grid item xs={8} sm={12}>
-      <GeneralButton 
-      title="BACK TO ADMIN MENU" 
-      size="large"
-      variant="contained"
-      url="/admin" />
-    </Grid>
-
-    </Grid>
     </Container>
   );
 }

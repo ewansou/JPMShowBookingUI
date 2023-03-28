@@ -20,17 +20,17 @@ const SingleRowFiveColumnTable = ({ data }) => {
   const classes = useStyles();
   return (
     <TableContainer component={Paper}>
-    <Table aria-label="simple table">
-      <TableHead>
-        <TableRow>
-          <TableCell>Show Number</TableCell>
-          <TableCell align="left">No. of Rows</TableCell>
-          <TableCell align="left">No. of Seats Per Row</TableCell>
-          <TableCell align="left">Total no. of Seats</TableCell>
-          <TableCell align="left">Cancellation Windows (in minutes)</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
+      <Table aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Show Number</TableCell>
+            <TableCell align="left">No. of Rows</TableCell>
+            <TableCell align="left">No. of Seats Per Row</TableCell>
+            <TableCell align="left">Total no. of Seats</TableCell>
+            <TableCell align="left">Cancellation Windows (in minutes)</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           <TableRow key={data.id}>
             <TableCell component="th" scope="row">
               {data.showNumber}
@@ -40,9 +40,9 @@ const SingleRowFiveColumnTable = ({ data }) => {
             <TableCell align="left">{data.totalNumberOfSeats}</TableCell>
             <TableCell align="left">{data.cancellationWindowInMinutes}</TableCell>
           </TableRow>
-      </TableBody>
-    </Table>
-  </TableContainer>
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 }
 export default SingleRowFiveColumnTable
