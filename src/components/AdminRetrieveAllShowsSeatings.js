@@ -4,7 +4,9 @@ import Container from '@mui/material/Container';
 import GeneralButton from "./GeneralButton";
 import axios from "axios";
 import SixColumnTable from "./SixColumnTable";
+import SixColumnDataTable from "./SixColumnDataTable";
 import { API_BASE } from "../config/constants";
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 
 function AdminRetrieveAllShowsSeatings() {
 
@@ -18,13 +20,13 @@ function AdminRetrieveAllShowsSeatings() {
   }, []);
 
   return (
-    <Container fixed>
+    <Container maxWidth="md">
       <h1>Show Seatings Details</h1>
       <Grid container spacing={2}>
 
-        <SixColumnTable data={allShowsSeatings} />
-
-        <Grid item xs={8} sm={12}>
+      <SixColumnDataTable rows={allShowsSeatings} />
+        
+        <Grid item xs={12} sm={12}>
           <GeneralButton
             title="BACK TO ADMIN MENU"
             size="large"
@@ -38,3 +40,4 @@ function AdminRetrieveAllShowsSeatings() {
 }
 
 export default AdminRetrieveAllShowsSeatings;
+

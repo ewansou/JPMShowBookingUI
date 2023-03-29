@@ -6,6 +6,8 @@ import SubmitButton from "./SubmitButton";
 import SixColumnTable from "./SixColumnTable";
 import GeneralButton from "./GeneralButton";
 import { API_BASE } from "../config/constants";
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
 
 const seatStatusOptions = [
   {
@@ -49,34 +51,36 @@ function AdminViewShowSeatingsByShowNumberAndStatus() {
   }
 
   return (
-    <Container fixed>
-      <h1>Please enter details below</h1>
+    <Container maxWidth="md">
+      <h1>View Show Seatings by Show Number and Status</h1>
       <Grid container spacing={2}>
 
-        <Grid item xs={8} sm={12}>
-          <h2>Please enter a show number below</h2>
-          <input
-            type="number"
-            className="form-control"
-            id="show-number"
-            placeholder="Enter Show Number"
-            value={showNumber}
-            onChange={e => setShowNumber(e.target.value)} />
+        <Grid item xs={12} sm={12}>
+          <TextField fullWidth type="number" id="standard-basic" label="Show Number" variant="standard"
+            value={showNumber} onChange={e => setShowNumber(e.target.value)} />
         </Grid>
 
-        <Grid item xs={8} sm={12}>
-          <label htmlFor="seatStatus" className="">Seat Status</label>
-          <select type="text" onChange={e => setSeatStatus(e.target.value)}>
-            <option>Please choose one option</option>
+        <Grid item xs={12} sm={12}>
+          <TextField
+            id="standard-basic"
+            select
+            fullWidth
+            label="Select a seat status"
+            defaultValue="Available"
+            variant="standard"
+            onChange={e => setSeatStatus(e.target.value)}
+          >
             {seatStatusOptions.map((seatStatus) => (
-              <option value={seatStatus.value}>{seatStatus.label}</option>
+              <MenuItem key={seatStatus.value} value={seatStatus.value}>
+                {seatStatus.label}
+              </MenuItem>
             ))}
-          </select>
+          </TextField>
         </Grid>
 
         {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
 
-        <Grid item xs={8} sm={12}>
+        <Grid item xs={12} sm={12}>
           <SubmitButton
             size="small"
             variant="contained"
@@ -86,7 +90,7 @@ function AdminViewShowSeatingsByShowNumberAndStatus() {
 
         <SixColumnTable data={showSeatingsDetail} />
 
-        <Grid item xs={8} sm={12}>
+        <Grid item xs={12} sm={12}>
           <GeneralButton
             title="BACK TO ADMIN MENU"
             size="large"

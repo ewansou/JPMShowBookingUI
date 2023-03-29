@@ -6,6 +6,7 @@ import GeneralButton from "./GeneralButton";
 import SixColumnTable from "./SixColumnTable";
 import SubmitButton from "./SubmitButton";
 import { API_BASE } from "../config/constants";
+import TextField from '@mui/material/TextField';
 
 
 function AdminViewShowSeatingsByShowNumber() {
@@ -31,19 +32,13 @@ function AdminViewShowSeatingsByShowNumber() {
   }
 
   return (
-    <Container fixed>
-      <h1>Please enter a show number below</h1>
+    <Container maxWidth="md">
+      <h1>View Show Seatings by Show Number</h1>
       <Grid container spacing={2}>
 
-        <Grid item xs={8} sm={12}>
-          <h2>Please enter a show number below</h2>
-          <input
-            type="number"
-            className="form-control"
-            id="show-number"
-            placeholder="Enter Show Number"
-            value={showNumber}
-            onChange={e => setShowNumber(e.target.value)} />
+        <Grid item xs={12} sm={12}>
+          <TextField fullWidth type="number" id="standard-basic" label="Show Number" variant="standard"
+            value={showNumber} onChange={e => setShowNumber(e.target.value)} />
         </Grid>
 
         {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}

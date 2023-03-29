@@ -5,6 +5,7 @@ import Container from '@mui/material/Container';
 import GeneralButton from "./GeneralButton";
 import SubmitButton from "./SubmitButton";
 import { API_BASE } from "../config/constants";
+import TextField from '@mui/material/TextField';
 
 function BuyerCancelTicket() {
 
@@ -36,30 +37,18 @@ function BuyerCancelTicket() {
 
   return (
 
-    <Container fixed>
-      <h1>Please enter details below to cancel your ticket</h1>
+    <Container maxWidth="md">
+      <h1>Enter details below to cancel your ticket</h1>
       <Grid container spacing={2}>
 
-        <Grid item xs={8} sm={12}>
-          <h2>Please enter your ticket number below</h2>
-          <input
-            type="text"
-            className="form-control"
-            id="ticket-number"
-            placeholder="Enter Your Ticket Number"
-            value={ticketNumber}
-            onChange={e => setTicketNumber(e.target.value)} />
+        <Grid item xs={12} sm={12}>
+          <TextField fullWidth type="text" id="standard-basic" label="Your Ticket Number" variant="standard"
+            value={ticketNumber} onChange={e => setTicketNumber(e.target.value)} />
         </Grid>
 
-        <Grid item xs={8} sm={12}>
-          <h2>Mobile Number</h2>
-          <input
-            type="text"
-            className="form-control"
-            id="mobile-number"
-            placeholder="Enter Your Mobile Number"
-            value={mobileNumber}
-            onChange={e => setMobileNumber(e.target.value)} />
+        <Grid item xs={12} sm={12}>
+          <TextField fullWidth type="text" id="standard-basic" label="Your Mobile Number" variant="standard"
+            value={mobileNumber} onChange={e => setMobileNumber(e.target.value)} />
         </Grid>
 
         {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
@@ -76,7 +65,7 @@ function BuyerCancelTicket() {
 
         <Grid item xs={8} sm={12}>
           <GeneralButton
-            title="BACK TO ADMIN MENU"
+            title="BACK TO BUYER MENU"
             size="large"
             variant="contained"
             url="/buyer" />

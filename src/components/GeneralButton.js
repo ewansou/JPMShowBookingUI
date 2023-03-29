@@ -8,9 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   button: {
-    width: 600,
     fontSize: 20,
-    color: "#FFFFFF",
+    color: "#FFFFFF"
   }
 });
 
@@ -22,6 +21,8 @@ const GeneralButton = ({ title, variant, size, url }) => {
       variant={variant}
       href={url}
       size={size}
+      align="center"
+      fullWidth="true"
       className={classes.button}
     >{title}</Button>
 

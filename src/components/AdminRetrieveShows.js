@@ -18,13 +18,13 @@ function AdminRetrieveShows() {
   }, []);
 
   return (
-    <Container fixed>
-      <h1>Below are the list of shows in system</h1>
+    <Container maxWidth="md">
+      <h1>List of Shows</h1>
       <Grid container spacing={2}>
 
         <FiveColumnTable data={showsDetails} />
 
-        <Grid item xs={8} sm={12}>
+        <Grid item xs={12} sm={12}>
           <GeneralButton
             title="BACK TO ADMIN MENU"
             size="large"

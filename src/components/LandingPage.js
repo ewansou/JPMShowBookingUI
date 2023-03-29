@@ -6,10 +6,10 @@ import GeneralButton from "./GeneralButton";
 
 function LandingPage() {
   return (
-    <Container fixed>
+    <Container maxWidth="sm">
       <h1>Welcome</h1>
       <Grid container spacing={2}>
-        <Grid item xs={8} sm={12}>
+        <Grid item xs={12} sm={12}>
           <GeneralButton
             title="Admin"
             size="large"

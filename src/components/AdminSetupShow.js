@@ -40,22 +40,38 @@ function AdminSetupShow() {
   }
 
   return (
-    <Container fixed>
+    <Container maxWidth="md">
       <h1>Please enter new show details below</h1>
 
       <Grid container spacing={2}>
-        <Grid item sm={3}>
-          <TextField label="Show Number" variant="standard"
+        <Grid item xs={12} sm={12}>
+          <TextField fullWidth label="Show Number" variant="standard"
             id="outlined-number" type="number" value={showNumber}
             onChange={e => setShowNumber(e.target.value)}
             InputLabelProps={{
               shrink: true,
             }} />
         </Grid>
-        <Grid item sm={3}>
-          <TextField label="No. of Rows" variant="standard"
+        <Grid item xs={12} sm={12}>
+          <TextField fullWidth label="No. of Rows" variant="standard"
             id="outlined-number" type="number" value={numOfRows}
             onChange={e => setNumOfRows(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }} />
+        </Grid>
+        <Grid item xs={12} sm={12}>
+          <TextField fullWidth label="No. of Seats Per Row" variant="standard"
+            id="outlined-number" type="number" value={numOfSeatsPerRow}
+            onChange={e => setNumOfSeatsPerRow(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }} />
+        </Grid>
+        <Grid item xs={12} sm={12}>
+          <TextField fullWidth label="Cancellation of Window (in minutes)" variant="standard"
+            id="outlined-number" type="number" value={cancelWindow}
+            onChange={e => setCancelWindow(e.target.value)}
             InputLabelProps={{
               shrink: true,
             }} />
@@ -63,25 +79,6 @@ function AdminSetupShow() {
       </Grid>
 
       <Grid container spacing={2}>
-        <Grid item sm={3}>
-          <TextField label="No. of Seats Per Row" variant="standard"
-            id="outlined-number" type="number" value={numOfSeatsPerRow}
-            onChange={e => setNumOfSeatsPerRow(e.target.value)}
-            InputLabelProps={{
-              shrink: true,
-            }} />
-        </Grid>
-        <Grid item sm={6}>
-          <TextField label="Cancellation of Window (in minutes)" variant="standard"
-            id="outlined-number" type="number" value={cancelWindow} multiline
-            onChange={e => setCancelWindow(e.target.value)}
-            InputLabelProps={{
-              shrink: true,
-            }} />
-        </Grid>
-        </Grid>
-
-        <Grid container spacing={2}>
         {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
 
         <Grid item xs={8} sm={12}>

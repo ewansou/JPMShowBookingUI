@@ -32,17 +32,16 @@ function AdminViewShowByShowNumber() {
   }
 
   return (
-    <Container fixed>
-      <h1>View Show By Show Number</h1>
+    <Container maxWidth="md">
+      <h1>View Details of Show By Show Number</h1>
       <Grid container spacing={2}>
 
-        <Grid item xs={8} sm={12}>
-          <h2>Please enter a show number below</h2>
-          <TextField id="standard-basic" label="Show Number" variant="standard"
+        <Grid item xs={12} sm={12}>
+          <TextField fullWidth type="number" id="standard-basic" label="Show Number" variant="standard"
           value={showNumber} onChange={e => setShowNumber(e.target.value)} />
         </Grid>
 
-        <Grid item xs={8} sm={12}>
+        <Grid item xs={12} sm={12}>
           <SubmitButton
             size="small"
             variant="contained"
@@ -54,7 +53,7 @@ function AdminViewShowByShowNumber() {
 
         <SingleRowFiveColumnTable data={showDetail} />
 
-        <Grid item xs={8} sm={12}>
+        <Grid item xs={12} sm={12}>
           <GeneralButton
             title="BACK TO ADMIN MENU"
             size="large"
