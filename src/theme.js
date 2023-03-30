@@ -12,5 +12,11 @@ export const theme = createTheme({
           main: blueGrey[700],      
           light: blueGrey[500],    
       }
+  },
+  typography: {
+    subtitle1: {
+        color: 'black',
+        fontWeight: 500
+    }
   }
 })

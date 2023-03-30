@@ -7,7 +7,7 @@ import SixColumnTable from "./SixColumnTable";
 import SubmitButton from "./SubmitButton";
 import { API_BASE } from "../config/constants";
 import TextField from '@mui/material/TextField';
-
+import { Typography } from "@material-ui/core";
 
 function AdminViewShowSeatingsByShowNumber() {
 
@@ -15,6 +15,11 @@ function AdminViewShowSeatingsByShowNumber() {
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showNumber, setShowNumber] = useState('');
+  const [initialText, setInitialText] = useState('');
+
+  useEffect(() => {
+    setInitialText("No shows selected. Please enter a show number above.");
+  }, []);
 
   const handleSubmit = () => {
     setLoading(true);
@@ -24,7 +29,11 @@ function AdminViewShowSeatingsByShowNumber() {
 
     axios.get(URL + showNumber).then(res => {
       setShowSeatingsDetail(res.data);
+      if(res.data) {
+      } else {
+      }
       setLoading(false);
+      setInitialText("No show found");
     }).catch(err => {
       setLoading(false);
       setIsError(true);
@@ -51,7 +60,10 @@ function AdminViewShowSeatingsByShowNumber() {
             onClick={handleSubmit} />
         </Grid>
 
-        <SixColumnTable data={showSeatingsDetail} />
+        {showSeatingsDetail.length > 0 ? <SixColumnTable data={showSeatingsDetail} /> :
+          <Grid item xs={12} sm={12}>
+            <Typography variant="subtitle1">{initialText}</Typography>
+          </Grid>}
 
         <Grid item xs={8} sm={12}>
           <GeneralButton

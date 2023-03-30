@@ -8,6 +8,7 @@ import GeneralButton from "./GeneralButton";
 import { API_BASE } from "../config/constants";
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
+import { Typography } from "@material-ui/core";
 
 const seatStatusOptions = [
   {
@@ -27,6 +28,11 @@ function AdminViewShowSeatingsByShowNumberAndStatus() {
   const [loading, setLoading] = useState(false);
   const [showNumber, setShowNumber] = useState('');
   const [seatStatus, setSeatStatus] = useState('');
+  const [initialText, setInitialText] = useState("");
+
+  useEffect(() => {
+    setInitialText("No shows selected. Please enter a show number above.");
+  }, []);
 
   const handleSubmit = () => {
     setLoading(true);
@@ -42,6 +48,7 @@ function AdminViewShowSeatingsByShowNumberAndStatus() {
 
     axios.get(finalURL).then(res => {
       console.log(finalURL)
+      console.log(res.data)
       setShowSeatingsDetail(res.data);
       setLoading(false);
     }).catch(err => {
@@ -78,8 +85,6 @@ function AdminViewShowSeatingsByShowNumberAndStatus() {
           </TextField>
         </Grid>
 
-        {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
-
         <Grid item xs={12} sm={12}>
           <SubmitButton
             size="small"
@@ -88,7 +93,15 @@ function AdminViewShowSeatingsByShowNumberAndStatus() {
             onClick={handleSubmit} />
         </Grid>
 
-        <SixColumnTable data={showSeatingsDetail} />
+        {
+          showSeatingsDetail.length > 0 ?
+            <SixColumnTable data={showSeatingsDetail} /> : showSeatingsDetail.length === 0
+              ? <Grid item xs={12} sm={12}>
+                <Typography variant="subtitle1">No relevant seats found for show</Typography></Grid>
+              : <Grid item xs={12} sm={12}>
+                <Typography variant="subtitle1">{initialText}</Typography>
+              </Grid>
+        }
 
         <Grid item xs={12} sm={12}>
           <GeneralButton
@@ -99,7 +112,7 @@ function AdminViewShowSeatingsByShowNumberAndStatus() {
         </Grid>
 
       </Grid>
-    </Container>
+    </Container >
   );
 }
 

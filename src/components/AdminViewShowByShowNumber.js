@@ -7,16 +7,21 @@ import SingleRowFiveColumnTable from "./SingleRowFiveColumnTable";
 import SubmitButton from "./SubmitButton";
 import { API_BASE } from "../config/constants";
 import TextField from '@mui/material/TextField';
+import { Typography } from "@material-ui/core";
 
 function AdminViewShowByShowNumber() {
 
-  const [showDetail, setShowDetail] = useState({});
+  const [showNumber, setShowNumber] = useState('');
+  const [showDetail, setShowDetail] = useState(null);
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [showNumber, setShowNumber] = useState('');
+  const [initialText, setInitialText] = useState("");
+
+  useEffect(() => {
+    setInitialText("No shows selected. Please enter a show number above.");
+  }, []);
 
   const handleSubmit = () => {
-    console.log("Hit handleSubmit");
     setLoading(true);
     setIsError(false);
 
@@ -25,6 +30,7 @@ function AdminViewShowByShowNumber() {
     axios.get(URL + showNumber).then(res => {
       setShowDetail(res.data);
       setLoading(false);
+      setInitialText("No show found");
     }).catch(err => {
       setLoading(false);
       setIsError(true);
@@ -38,7 +44,7 @@ function AdminViewShowByShowNumber() {
 
         <Grid item xs={12} sm={12}>
           <TextField fullWidth type="number" id="standard-basic" label="Show Number" variant="standard"
-          value={showNumber} onChange={e => setShowNumber(e.target.value)} />
+            value={showNumber} onChange={e => setShowNumber(e.target.value)} />
         </Grid>
 
         <Grid item xs={12} sm={12}>
@@ -51,7 +57,10 @@ function AdminViewShowByShowNumber() {
 
         {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
 
-        <SingleRowFiveColumnTable data={showDetail} />
+        {showDetail ? <SingleRowFiveColumnTable data={showDetail} /> :
+          <Grid item xs={12} sm={12}>
+            <Typography variant="subtitle1">{initialText}</Typography>
+          </Grid>}
 
         <Grid item xs={12} sm={12}>
           <GeneralButton

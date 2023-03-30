@@ -5,6 +5,7 @@ import GeneralButton from "./GeneralButton";
 import axios from "axios";
 import FiveColumnTable from "./FiveColumnTable";
 import { API_BASE } from "../config/constants";
+import { Typography } from "@material-ui/core";
 
 function AdminRetrieveShows() {
 
@@ -22,7 +23,11 @@ function AdminRetrieveShows() {
       <h1>List of Shows</h1>
       <Grid container spacing={2}>
 
-        <FiveColumnTable data={showsDetails} />
+        {showsDetails.length > 0 ? <FiveColumnTable data={showsDetails} /> :
+          <Grid item xs={12} sm={12}>
+          <Typography variant="subtitle1">There is no shows added yet</Typography>
+          </Grid>
+        }
 
         <Grid item xs={12} sm={12}>
           <GeneralButton

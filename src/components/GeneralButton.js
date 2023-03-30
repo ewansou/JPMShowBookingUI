@@ -22,7 +22,7 @@ const GeneralButton = ({ title, variant, size, url }) => {
       href={url}
       size={size}
       align="center"
-      fullWidth="true"
+      fullWidth={true}
       className={classes.button}
     >{title}</Button>
 

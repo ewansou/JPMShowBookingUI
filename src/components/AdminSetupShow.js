@@ -6,6 +6,7 @@ import axios from "axios";
 import SubmitButton from "./SubmitButton";
 import { API_BASE } from "../config/constants";
 import TextField from '@mui/material/TextField';
+import { Typography } from "@material-ui/core";
 
 function AdminSetupShow() {
 
@@ -88,8 +89,9 @@ function AdminSetupShow() {
             title={loading ? 'Loading...' : 'Submit'}
             onClick={handleSubmit} />
         </Grid>
-
-        <h3>{response}</h3>
+        <Grid item xs={8} sm={12}>
+          <Typography variant="subtitle1">{response}</Typography>
+        </Grid>
 
         <Grid item xs={8} sm={12}>
           <GeneralButton
